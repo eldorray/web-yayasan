@@ -1,6 +1,8 @@
 <?php
 
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\News\Form as AdminNewsForm;
+use App\Livewire\Admin\News\Index as AdminNewsIndex;
 use App\Livewire\Admin\Schools\Form as AdminSchoolsForm;
 use App\Livewire\Admin\Schools\Index as AdminSchoolsIndex;
 use App\Livewire\Auth\Login;
@@ -46,8 +48,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/sekolah/baru', AdminSchoolsForm::class)->name('schools.create');
         Route::get('/sekolah/{school}/edit', AdminSchoolsForm::class)->name('schools.edit');
 
-        // Placeholder — diganti saat CRUD masing-masing dibuat (Task 3.4–3.6)
-        Route::get('/berita', Dashboard::class)->name('news.index');
+        Route::get('/berita', AdminNewsIndex::class)->name('news.index');
+        Route::get('/berita/baru', AdminNewsForm::class)->name('news.create');
+        Route::get('/berita/{news}/edit', AdminNewsForm::class)->name('news.edit');
+
+        // Placeholder — diganti saat CRUD masing-masing dibuat (Task 3.5–3.6)
         Route::get('/galeri', Dashboard::class)->name('gallery.index');
         Route::get('/pengaturan', Dashboard::class)->name('settings.index');
     });
