@@ -196,7 +196,7 @@ git commit -m "feat: green-gold theme as default (emerald + gold accent)"
 - Modify: `database/seeders/DatabaseSeeder.php`
 - Test: `tests/Feature/AdminAccessTest.php`
 
-- [ ] **Step 1: Tulis test gagal**
+- [x] **Step 1: Tulis test gagal**
 
 Buat `tests/Feature/AdminAccessTest.php`:
 
@@ -223,7 +223,7 @@ it('allows admin user to access admin dashboard', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=AdminAccessTest
@@ -231,7 +231,7 @@ php artisan test --filter=AdminAccessTest
 
 Expected: FAIL (route `admin.dashboard` belum ada, kolom `is_admin` belum ada).
 
-- [ ] **Step 3: Buat migrasi `is_admin`**
+- [x] **Step 3: Buat migrasi `is_admin`**
 
 Jalankan:
 
@@ -257,7 +257,7 @@ public function down(): void
 }
 ```
 
-- [ ] **Step 4: Tambah `is_admin` ke User model**
+- [x] **Step 4: Tambah `is_admin` ke User model**
 
 Di `app/Models/User.php`, perbarui attribute `#[Fillable(...)]` di baris 16:
 
@@ -274,7 +274,7 @@ public function isAdmin(): bool
 }
 ```
 
-- [ ] **Step 5: Buat middleware `IsAdmin`**
+- [x] **Step 5: Buat middleware `IsAdmin`**
 
 Jalankan:
 
@@ -306,7 +306,7 @@ class IsAdmin
 }
 ```
 
-- [ ] **Step 6: Daftarkan alias middleware di `bootstrap/app.php`**
+- [x] **Step 6: Daftarkan alias middleware di `bootstrap/app.php`**
 
 Ubah `withMiddleware` menjadi:
 
@@ -318,7 +318,7 @@ Ubah `withMiddleware` menjadi:
 })
 ```
 
-- [ ] **Step 7: Perbarui seeder — admin user jadi `is_admin`**
+- [x] **Step 7: Perbarui seeder — admin user jadi `is_admin`**
 
 Ganti isi `database/seeders/DatabaseSeeder.php` method `run()`:
 
@@ -338,7 +338,7 @@ public function run(): void
 }
 ```
 
-- [ ] **Step 8: Tambah route placeholder `admin.dashboard`**
+- [x] **Step 8: Tambah route placeholder `admin.dashboard`**
 
 Sementara arahkan ke `Admin\Dashboard` yang sudah ada. Di `routes/web.php`, tambah di dalam grup `auth`:
 
@@ -350,13 +350,13 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
 (Dashboard akan direvisi di Task 1.8; untuk sekarang cukup agar route ada.)
 
-- [ ] **Step 9: Migrate & seed**
+- [x] **Step 9: Migrate & seed**
 
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-- [ ] **Step 10: Jalankan test, verifikasi lulus**
+- [x] **Step 10: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=AdminAccessTest
@@ -364,7 +364,7 @@ php artisan test --filter=AdminAccessTest
 
 Expected: PASS (3 tes)
 
-- [ ] **Step 11: Commit**
+- [x] **Step 11: Commit**
 
 ```bash
 git add -A

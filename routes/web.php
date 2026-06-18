@@ -3,15 +3,22 @@
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\Public\Home;
 use App\Livewire\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Settings\Profile as SettingsProfile;
 use App\Livewire\Settings\Theme as SettingsTheme;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->route(Auth::check() ? 'dashboard' : 'login');
-})->name('home');
+// Rute publik (sebagian placeholder — akan diisi tugas berikutnya)
+Route::name('public.')->group(function () {
+    Route::get('/', Home::class)->name('home');
+    Route::get('/tentang', Home::class)->name('about');
+    Route::get('/sekolah', Home::class)->name('schools.index');
+    Route::get('/berita', Home::class)->name('news.index');
+    Route::get('/galeri', Home::class)->name('gallery.index');
+    Route::get('/ppdb', Home::class)->name('ppdb');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');
