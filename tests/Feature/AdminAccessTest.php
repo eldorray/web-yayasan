@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\School;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use function Pest\Laravel\{actingAs, get};
+use function Pest\Laravel\actingAs;
+use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
 
@@ -23,6 +25,6 @@ it('allows admin user to access admin dashboard', function () {
 
 it('admin dashboard shows school count', function () {
     $admin = User::factory()->create(['is_admin' => true]);
-    \App\Models\School::factory()->count(2)->create();
+    School::factory()->count(2)->create();
     actingAs($admin)->get(route('admin.dashboard'))->assertOk()->assertSee('Sekolah');
 });

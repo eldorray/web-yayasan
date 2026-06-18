@@ -382,7 +382,7 @@ git commit -m "feat: admin middleware + is_admin role with tests"
 - Create: `database/migrations/2026_06_18_000004_create_ppdb_infos_table.php`
 - Create: `database/migrations/2026_06_18_000005_create_site_settings_table.php`
 
-- [ ] **Step 1: Buat 5 file migrasi sekaligus**
+- [x] **Step 1: Buat 5 file migrasi sekaligus**
 
 ```bash
 php artisan make:migration create_schools_table
@@ -392,7 +392,7 @@ php artisan make:migration create_ppdb_infos_table
 php artisan make:migration create_site_settings_table
 ```
 
-- [ ] **Step 2: Isi migrasi `create_schools_table`**
+- [x] **Step 2: Isi migrasi `create_schools_table`**
 
 ```php
 <?php
@@ -432,7 +432,7 @@ return new class extends Migration {
 };
 ```
 
-- [ ] **Step 3: Isi migrasi `create_news_table`**
+- [x] **Step 3: Isi migrasi `create_news_table`**
 
 ```php
 <?php
@@ -468,7 +468,7 @@ return new class extends Migration {
 };
 ```
 
-- [ ] **Step 4: Isi migrasi `create_gallery_images_table`**
+- [x] **Step 4: Isi migrasi `create_gallery_images_table`**
 
 ```php
 <?php
@@ -498,7 +498,7 @@ return new class extends Migration {
 };
 ```
 
-- [ ] **Step 5: Isi migrasi `create_ppdb_infos_table`**
+- [x] **Step 5: Isi migrasi `create_ppdb_infos_table`**
 
 ```php
 <?php
@@ -532,7 +532,7 @@ return new class extends Migration {
 };
 ```
 
-- [ ] **Step 6: Isi migrasi `create_site_settings_table`**
+- [x] **Step 6: Isi migrasi `create_site_settings_table`**
 
 ```php
 <?php
@@ -569,7 +569,7 @@ return new class extends Migration {
 };
 ```
 
-- [ ] **Step 7: Jalankan migrasi**
+- [x] **Step 7: Jalankan migrasi**
 
 ```bash
 php artisan migrate
@@ -577,7 +577,7 @@ php artisan migrate
 
 Expected: 5 tabel baru dibuat tanpa error.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add database/migrations/
@@ -596,7 +596,7 @@ git commit -m "feat: content tables (schools, news, gallery, ppdb, site_settings
 - Create: `app/Models/SiteSetting.php`
 - Test: `tests/Feature/ModelsTest.php`
 
-- [ ] **Step 1: Tulis test gagal**
+- [x] **Step 1: Tulis test gagal**
 
 Buat `tests/Feature/ModelsTest.php`:
 
@@ -637,7 +637,7 @@ it('returns singleton site setting', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=ModelsTest
@@ -645,7 +645,7 @@ php artisan test --filter=ModelsTest
 
 Expected: FAIL (model belum ada).
 
-- [ ] **Step 3: Buat `app/Models/School.php`**
+- [x] **Step 3: Buat `app/Models/School.php`**
 
 ```php
 <?php
@@ -748,7 +748,7 @@ class School extends Model
 }
 ```
 
-- [ ] **Step 4: Buat `app/Models/News.php`**
+- [x] **Step 4: Buat `app/Models/News.php`**
 
 ```php
 <?php
@@ -819,7 +819,7 @@ class News extends Model
 }
 ```
 
-- [ ] **Step 5: Buat `app/Models/GalleryImage.php`**
+- [x] **Step 5: Buat `app/Models/GalleryImage.php`**
 
 ```php
 <?php
@@ -860,7 +860,7 @@ class GalleryImage extends Model
 }
 ```
 
-- [ ] **Step 6: Buat `app/Models/PpdbInfo.php`**
+- [x] **Step 6: Buat `app/Models/PpdbInfo.php`**
 
 ```php
 <?php
@@ -893,7 +893,7 @@ class PpdbInfo extends Model
 }
 ```
 
-- [ ] **Step 7: Buat `app/Models/SiteSetting.php`**
+- [x] **Step 7: Buat `app/Models/SiteSetting.php`**
 
 ```php
 <?php
@@ -927,7 +927,7 @@ class SiteSetting extends Model
 }
 ```
 
-- [ ] **Step 8: Jalankan test, verifikasi lulus**
+- [x] **Step 8: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=ModelsTest
@@ -935,7 +935,7 @@ php artisan test --filter=ModelsTest
 
 Expected: PASS (5 tes)
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add app/Models/ tests/Feature/ModelsTest.php
@@ -954,7 +954,7 @@ git commit -m "feat: content models (School, News, GalleryImage, PpdbInfo, SiteS
 - Modify: `database/seeders/DatabaseSeeder.php`
 - Create: `database/seeders/ContentSeeder.php`
 
-- [ ] **Step 1: Buat factories**
+- [x] **Step 1: Buat factories**
 
 Jalankan:
 
@@ -965,7 +965,7 @@ php artisan make:factory GalleryImageFactory
 php artisan make:factory PpdbInfoFactory
 ```
 
-- [ ] **Step 2: Isi `database/factories/SchoolFactory.php`**
+- [x] **Step 2: Isi `database/factories/SchoolFactory.php`**
 
 ```php
 <?php
@@ -1000,7 +1000,7 @@ class SchoolFactory extends Factory
 
 (Catatan: `slug` diisi otomatis oleh boot hook di model.)
 
-- [ ] **Step 3: Isi `database/factories/NewsFactory.php`**
+- [x] **Step 3: Isi `database/factories/NewsFactory.php`**
 
 ```php
 <?php
@@ -1030,7 +1030,7 @@ class NewsFactory extends Factory
 }
 ```
 
-- [ ] **Step 4: Isi `database/factories/GalleryImageFactory.php`**
+- [x] **Step 4: Isi `database/factories/GalleryImageFactory.php`**
 
 ```php
 <?php
@@ -1055,7 +1055,7 @@ class GalleryImageFactory extends Factory
 }
 ```
 
-- [ ] **Step 5: Isi `database/factories/PpdbInfoFactory.php`**
+- [x] **Step 5: Isi `database/factories/PpdbInfoFactory.php`**
 
 ```php
 <?php
@@ -1084,7 +1084,7 @@ class PpdbInfoFactory extends Factory
 }
 ```
 
-- [ ] **Step 6: Buat `database/seeders/ContentSeeder.php`**
+- [x] **Step 6: Buat `database/seeders/ContentSeeder.php`**
 
 Jalankan:
 
@@ -1174,7 +1174,7 @@ class ContentSeeder extends Seeder
 }
 ```
 
-- [ ] **Step 7: Panggil ContentSeeder dari DatabaseSeeder**
+- [x] **Step 7: Panggil ContentSeeder dari DatabaseSeeder**
 
 Update method `run()` di `database/seeders/DatabaseSeeder.php`:
 
@@ -1198,7 +1198,7 @@ public function run(): void
 }
 ```
 
-- [ ] **Step 8: Migrate fresh + seed, verifikasi**
+- [x] **Step 8: Migrate fresh + seed, verifikasi**
 
 ```bash
 php artisan migrate:fresh --seed
@@ -1212,7 +1212,7 @@ php artisan tinker --execute="echo \App\Models\School::count().' sekolah, '.\App
 
 Expected: `3 sekolah, 9 berita, 12 foto galeri`
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add database/factories/ database/seeders/
@@ -1226,7 +1226,7 @@ git commit -m "feat: factories + content seeder (3 sekolah, berita, galeri conto
 **Files:**
 - Modify: `resources/views/components/admin/sidebar.blade.php`
 
-- [ ] **Step 1: Ganti logo & nama di sidebar**
+- [x] **Step 1: Ganti logo & nama di sidebar**
 
 Di `resources/views/components/admin/sidebar.blade.php`, ubah blok logo (baris ~16-20):
 
@@ -1241,7 +1241,7 @@ Di `resources/views/components/admin/sidebar.blade.php`, ubah blok logo (baris ~
 </a>
 ```
 
-- [ ] **Step 2: Verifikasi visual**
+- [x] **Step 2: Verifikasi visual**
 
 ```bash
 npm run build
@@ -1249,7 +1249,7 @@ npm run build
 
 Buka `/admin` setelah login — logo harus "Dh" dengan latar hijau gelap & teks emas.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add resources/views/components/admin/sidebar.blade.php
@@ -1268,7 +1268,7 @@ git commit -m "feat: yayasan logo monogram (Dh) in sidebar"
 - Create: `resources/views/components/public/footer.blade.php`
 - Create: `app/Livewire/Public/Home.php` (placeholder)
 
-- [ ] **Step 1: Buat komponen navbar**
+- [x] **Step 1: Buat komponen navbar**
 
 `resources/views/components/public/navbar.blade.php`:
 
@@ -1317,7 +1317,7 @@ git commit -m "feat: yayasan logo monogram (Dh) in sidebar"
 </header>
 ```
 
-- [ ] **Step 2: Buat komponen footer**
+- [x] **Step 2: Buat komponen footer**
 
 `resources/views/components/public/footer.blade.php`:
 
@@ -1368,7 +1368,7 @@ git commit -m "feat: yayasan logo monogram (Dh) in sidebar"
 </footer>
 ```
 
-- [ ] **Step 3: Buat layout publik**
+- [x] **Step 3: Buat layout publik**
 
 `resources/views/components/layouts/public.blade.php`:
 
@@ -1395,7 +1395,7 @@ git commit -m "feat: yayasan logo monogram (Dh) in sidebar"
 </html>
 ```
 
-- [ ] **Step 4: Buat placeholder Home component + route untuk verifikasi layout**
+- [x] **Step 4: Buat placeholder Home component + route untuk verifikasi layout**
 
 `app/Livewire/Public/Home.php`:
 
@@ -1435,7 +1435,7 @@ class Home extends Component
 </div>
 ```
 
-- [ ] **Step 5: Tambah rute publik placeholder**
+- [x] **Step 5: Tambah rute publik placeholder**
 
 Di `routes/web.php`, **ganti** route `/` yang lama:
 
@@ -1464,7 +1464,7 @@ Route::name('public.')->group(function () {
 
 (Catatan: hapus baris `Route::get('/', Home::class)->name('public.home');` yang barusan ditambah, karena sudah ada di dalam grup.)
 
-- [ ] **Step 6: Build & verifikasi**
+- [x] **Step 6: Build & verifikasi**
 
 ```bash
 npm run build
@@ -1473,7 +1473,7 @@ php artisan route:clear
 
 Buka `/` di browser — harus tampil navbar (logo Dh + menu) + judul yayasan + footer, dengan warna hijau-emas.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add -A
@@ -1489,7 +1489,7 @@ git commit -m "feat: public layout + navbar/footer with green-gold theme"
 - Create: `resources/views/components/public/school-card.blade.php`
 - Create: `resources/views/components/public/news-card.blade.php`
 
-- [ ] **Step 1: Buat komponen kartu sekolah**
+- [x] **Step 1: Buat komponen kartu sekolah**
 
 `resources/views/components/public/school-card.blade.php`:
 
@@ -1518,7 +1518,7 @@ git commit -m "feat: public layout + navbar/footer with green-gold theme"
 </a>
 ```
 
-- [ ] **Step 2: Buat komponen kartu berita**
+- [x] **Step 2: Buat komponen kartu berita**
 
 `resources/views/components/public/news-card.blade.php`:
 
@@ -1542,7 +1542,7 @@ git commit -m "feat: public layout + navbar/footer with green-gold theme"
 </a>
 ```
 
-- [ ] **Step 3: Isi beranda**
+- [x] **Step 3: Isi beranda**
 
 Ganti `resources/views/livewire/public/home.blade.php`:
 
@@ -1638,7 +1638,7 @@ Ganti `resources/views/livewire/public/home.blade.php`:
 </div>
 ```
 
-- [ ] **Step 4: Build & verifikasi**
+- [x] **Step 4: Build & verifikasi**
 
 ```bash
 npm run build
@@ -1646,7 +1646,7 @@ npm run build
 
 Buka `/` — harus tampil: hero split (hijau dengan lingkaran Dh emas), stats, 3 kartu sekolah, kartu PPDB + 3 kartu berita.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1662,7 +1662,7 @@ git commit -m "feat: public homepage with hero split, stats, school/news grid"
 - Create: `resources/views/livewire/public/about.blade.php`
 - Modify: `routes/web.php`
 
-- [ ] **Step 1: Buat component About**
+- [x] **Step 1: Buat component About**
 
 `app/Livewire/Public/About.php`:
 
@@ -1689,7 +1689,7 @@ class About extends Component
 }
 ```
 
-- [ ] **Step 2: Buat view About**
+- [x] **Step 2: Buat view About**
 
 `resources/views/livewire/public/about.blade.php`:
 
@@ -1736,7 +1736,7 @@ class About extends Component
 </div>
 ```
 
-- [ ] **Step 3: Update rute**
+- [x] **Step 3: Update rute**
 
 Di `routes/web.php`, ganti placeholder about dengan:
 
@@ -1746,7 +1746,7 @@ use App\Livewire\Public\About;
 Route::get('/tentang', About::class)->name('about');
 ```
 
-- [ ] **Step 4: Build & verifikasi**
+- [x] **Step 4: Build & verifikasi**
 
 ```bash
 npm run build
@@ -1755,7 +1755,7 @@ php artisan route:clear
 
 Buka `/tentang` — harus tampil header hijau + kartu Visi/Misi + Sejarah.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1772,7 +1772,7 @@ git commit -m "feat: public about page (vision, mission, history)"
 - Modify: `routes/web.php`
 - Test: `tests/Feature/PublicSchoolsTest.php`
 
-- [ ] **Step 1: Tulis test gagal**
+- [x] **Step 1: Tulis test gagal**
 
 `tests/Feature/PublicSchoolsTest.php`:
 
@@ -1794,7 +1794,7 @@ it('hides inactive schools', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=PublicSchoolsTest
@@ -1802,7 +1802,7 @@ php artisan test --filter=PublicSchoolsTest
 
 Expected: FAIL (route/component belum ada).
 
-- [ ] **Step 3: Buat component Index**
+- [x] **Step 3: Buat component Index**
 
 `app/Livewire/Public/Schools/Index.php`:
 
@@ -1850,7 +1850,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 4: Buat view Index**
+- [x] **Step 4: Buat view Index**
 
 `resources/views/livewire/public/schools/index.blade.php`:
 
@@ -1889,7 +1889,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 5: Update rute**
+- [x] **Step 5: Update rute**
 
 Di `routes/web.php`, ganti placeholder:
 
@@ -1899,7 +1899,7 @@ use App\Livewire\Public\Schools\Index as SchoolsIndex;
 Route::get('/sekolah', SchoolsIndex::class)->name('schools.index');
 ```
 
-- [ ] **Step 6: Jalankan test, verifikasi lulus**
+- [x] **Step 6: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=PublicSchoolsTest
@@ -1907,7 +1907,7 @@ php artisan test --filter=PublicSchoolsTest
 
 Expected: PASS (2 tes)
 
-- [ ] **Step 7: Build & verifikasi manual**
+- [x] **Step 7: Build & verifikasi manual**
 
 ```bash
 npm run build
@@ -1916,7 +1916,7 @@ php artisan route:clear
 
 Buka `/sekolah` — daftar 3 sekolah + filter chips. Klik filter → daftar berubah (Livewire).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add -A
@@ -1933,7 +1933,7 @@ git commit -m "feat: public schools index with level filter"
 - Modify: `routes/web.php`
 - Test: `tests/Feature/PublicSchoolsTest.php` (tambah)
 
-- [ ] **Step 1: Tambah test**
+- [x] **Step 1: Tambah test**
 
 Tambah ke `tests/Feature/PublicSchoolsTest.php`:
 
@@ -1948,7 +1948,7 @@ it('returns 404 for unknown slug', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=PublicSchoolsTest
@@ -1956,7 +1956,7 @@ php artisan test --filter=PublicSchoolsTest
 
 Expected: 2 tes baru FAIL.
 
-- [ ] **Step 3: Buat component Show**
+- [x] **Step 3: Buat component Show**
 
 `app/Livewire/Public/Schools/Show.php`:
 
@@ -2009,7 +2009,7 @@ class Show extends Component
 }
 ```
 
-- [ ] **Step 4: Buat view Show**
+- [x] **Step 4: Buat view Show**
 
 `resources/views/livewire/public/schools/show.blade.php`:
 
@@ -2107,7 +2107,7 @@ class Show extends Component
 </div>
 ```
 
-- [ ] **Step 5: Update rute**
+- [x] **Step 5: Update rute**
 
 Di `routes/web.php`:
 
@@ -2117,7 +2117,7 @@ use App\Livewire\Public\Schools\Show as SchoolsShow;
 Route::get('/sekolah/{school:slug}', SchoolsShow::class)->name('schools.show');
 ```
 
-- [ ] **Step 6: Jalankan test, verifikasi lulus**
+- [x] **Step 6: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=PublicSchoolsTest
@@ -2125,7 +2125,7 @@ php artisan test --filter=PublicSchoolsTest
 
 Expected: PASS (4 tes)
 
-- [ ] **Step 7: Build & verifikasi manual**
+- [x] **Step 7: Build & verifikasi manual**
 
 ```bash
 npm run build
@@ -2134,7 +2134,7 @@ php artisan route:clear
 
 Buka `/sekolah/sd-islam-daarul-hikmah` — profil sekolah dengan 3 tab. Klik tab → konten berubah.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add -A
@@ -2153,7 +2153,7 @@ git commit -m "feat: public school profile with tabs (about/ppdb/gallery)"
 - Modify: `routes/web.php`
 - Test: `tests/Feature/PublicNewsTest.php`
 
-- [ ] **Step 1: Tulis test gagal**
+- [x] **Step 1: Tulis test gagal**
 
 `tests/Feature/PublicNewsTest.php`:
 
@@ -2182,7 +2182,7 @@ it('shows news article by slug', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=PublicNewsTest
@@ -2190,7 +2190,7 @@ php artisan test --filter=PublicNewsTest
 
 Expected: FAIL.
 
-- [ ] **Step 3: Buat component Index**
+- [x] **Step 3: Buat component Index**
 
 `app/Livewire/Public/News/Index.php`:
 
@@ -2240,7 +2240,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 4: Buat view Index**
+- [x] **Step 4: Buat view Index**
 
 `resources/views/livewire/public/news/index.blade.php`:
 
@@ -2292,7 +2292,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 5: Buat component Show**
+- [x] **Step 5: Buat component Show**
 
 `app/Livewire/Public/News/Show.php`:
 
@@ -2323,7 +2323,7 @@ class Show extends Component
 }
 ```
 
-- [ ] **Step 6: Buat view Show**
+- [x] **Step 6: Buat view Show**
 
 `resources/views/livewire/public/news/show.blade.php`:
 
@@ -2355,7 +2355,7 @@ class Show extends Component
 </div>
 ```
 
-- [ ] **Step 7: Update rute**
+- [x] **Step 7: Update rute**
 
 Di `routes/web.php`:
 
@@ -2367,7 +2367,7 @@ Route::get('/berita', NewsIndex::class)->name('news.index');
 Route::get('/berita/{news:slug}', NewsShow::class)->name('news.show');
 ```
 
-- [ ] **Step 8: Jalankan test, verifikasi lulus**
+- [x] **Step 8: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=PublicNewsTest
@@ -2375,7 +2375,7 @@ php artisan test --filter=PublicNewsTest
 
 Expected: PASS (3 tes)
 
-- [ ] **Step 9: Build & verifikasi manual**
+- [x] **Step 9: Build & verifikasi manual**
 
 ```bash
 npm run build
@@ -2384,7 +2384,7 @@ php artisan route:clear
 
 Buka `/berita` → daftar + filter + paginasi. Klik artikel → halaman detail.
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add -A
@@ -2400,7 +2400,7 @@ git commit -m "feat: public news (list with filter/pagination + article detail)"
 - Create: `resources/views/livewire/public/gallery/index.blade.php`
 - Modify: `routes/web.php`
 
-- [ ] **Step 1: Buat component Index**
+- [x] **Step 1: Buat component Index**
 
 `app/Livewire/Public/Gallery/Index.php`:
 
@@ -2449,7 +2449,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 2: Buat view Index (dengan lightbox Alpine)**
+- [x] **Step 2: Buat view Index (dengan lightbox Alpine)**
 
 `resources/views/livewire/public/gallery/index.blade.php`:
 
@@ -2509,7 +2509,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 3: Update rute**
+- [x] **Step 3: Update rute**
 
 Di `routes/web.php`:
 
@@ -2519,7 +2519,7 @@ use App\Livewire\Public\Gallery\Index as GalleryIndex;
 Route::get('/galeri', GalleryIndex::class)->name('gallery.index');
 ```
 
-- [ ] **Step 4: Build & verifikasi**
+- [x] **Step 4: Build & verifikasi**
 
 ```bash
 npm run build
@@ -2528,7 +2528,7 @@ php artisan route:clear
 
 Buka `/galeri` → grid foto masonry. Klik foto → lightbox.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -2544,7 +2544,7 @@ git commit -m "feat: public gallery with masonry grid + lightbox"
 - Create: `resources/views/livewire/public/ppdb.blade.php`
 - Modify: `routes/web.php`
 
-- [ ] **Step 1: Buat component Ppdb**
+- [x] **Step 1: Buat component Ppdb**
 
 `app/Livewire/Public/Ppdb.php`:
 
@@ -2583,7 +2583,7 @@ class Ppdb extends Component
 }
 ```
 
-- [ ] **Step 2: Buat view Ppdb**
+- [x] **Step 2: Buat view Ppdb**
 
 `resources/views/livewire/public/ppdb.blade.php`:
 
@@ -2648,7 +2648,7 @@ class Ppdb extends Component
 </div>
 ```
 
-- [ ] **Step 3: Update rute**
+- [x] **Step 3: Update rute**
 
 Di `routes/web.php`:
 
@@ -2658,7 +2658,7 @@ use App\Livewire\Public\Ppdb;
 Route::get('/ppdb', Ppdb::class)->name('ppdb');
 ```
 
-- [ ] **Step 4: Build & verifikasi**
+- [x] **Step 4: Build & verifikasi**
 
 ```bash
 npm run build
@@ -2667,7 +2667,7 @@ php artisan route:clear
 
 Buka `/ppdb` → daftar PPDB per tahun ajaran + status + kontak.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -2681,13 +2681,13 @@ git commit -m "feat: public PPDB page (per-school status + registration links)"
 **Files:**
 - Create: `README.md`
 
-- [ ] **Step 1: Buat storage symlink**
+- [x] **Step 1: Buat storage symlink**
 
 ```bash
 php artisan storage:link
 ```
 
-- [ ] **Step 2: Jalankan semua tes publik**
+- [x] **Step 2: Jalankan semua tes publik**
 
 ```bash
 php artisan test --filter=Public
@@ -2695,7 +2695,7 @@ php artisan test --filter=Public
 
 Expected: semua PASS (9 tes dari Task 2.4, 2.5, 2.6).
 
-- [ ] **Step 3: Tulis README**
+- [x] **Step 3: Tulis README**
 
 `README.md`:
 
@@ -2725,7 +2725,7 @@ composer dev   # server + queue + logs + vite
 ```
 ````
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add -A
@@ -2743,7 +2743,7 @@ git commit -m "docs: README + storage link setup"
 - Modify: `resources/views/livewire/admin/dashboard.blade.php`
 - Test: `tests/Feature/AdminAccessTest.php` (tambah)
 
-- [ ] **Step 1: Ganti isi `app/Livewire/Admin/Dashboard.php`**
+- [x] **Step 1: Ganti isi `app/Livewire/Admin/Dashboard.php`**
 
 ```php
 <?php
@@ -2794,7 +2794,7 @@ class Dashboard extends Component
 }
 ```
 
-- [ ] **Step 2: Ganti isi `resources/views/livewire/admin/dashboard.blade.php`**
+- [x] **Step 2: Ganti isi `resources/views/livewire/admin/dashboard.blade.php`**
 
 ```blade
 <div>
@@ -2856,7 +2856,7 @@ class Dashboard extends Component
 </div>
 ```
 
-- [ ] **Step 3: Tambah test**
+- [x] **Step 3: Tambah test**
 
 Tambah ke `tests/Feature/AdminAccessTest.php`:
 
@@ -2868,7 +2868,7 @@ it('admin dashboard shows school count', function () {
 });
 ```
 
-- [ ] **Step 4: Jalankan test**
+- [x] **Step 4: Jalankan test**
 
 ```bash
 php artisan test --filter=AdminAccessTest
@@ -2876,7 +2876,7 @@ php artisan test --filter=AdminAccessTest
 
 Expected: PASS (4 tes).
 
-- [ ] **Step 5: Build & verifikasi**
+- [x] **Step 5: Build & verifikasi**
 
 ```bash
 npm run build
@@ -2884,7 +2884,7 @@ npm run build
 
 Buka `/admin` (login sebagai admin) → dashboard yayasan dengan stats + berita terbaru.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -2899,7 +2899,7 @@ git commit -m "feat: admin dashboard with yayasan stats"
 - Modify: `resources/views/components/admin/sidebar.blade.php`
 - Modify: `resources/views/components/admin/icon.blade.php`
 
-- [ ] **Step 1: Tambah ikon baru di komponen icon**
+- [x] **Step 1: Tambah ikon baru di komponen icon**
 
 Komponen `resources/views/components/admin/icon.blade.php` memakai pola `@switch($name)` → `@case('...')` → `<svg>...</svg>` → `@break` (verifikasi struktur ini sebelum mengedit). Tambah 4 case baru **sebelum** `@default`, ikuti pola yang persis sama (tag `<svg>` lengkap dengan `class="{{ $class }}"` dan `{!! $svgAttrs !!}`):
 
@@ -2934,7 +2934,7 @@ Komponen `resources/views/components/admin/icon.blade.php` memakai pola `@switch
     @break
 ```
 
-- [ ] **Step 2: Update menu sidebar**
+- [x] **Step 2: Update menu sidebar**
 
 Di `resources/views/components/admin/sidebar.blade.php`, ubah array `$nav`:
 
@@ -2953,7 +2953,7 @@ Di `resources/views/components/admin/sidebar.blade.php`, ubah array `$nav`:
 
 (Simpan link ke profil/tema user & logout di bawah seperti asal.)
 
-- [ ] **Step 3: Build & verifikasi**
+- [x] **Step 3: Build & verifikasi**
 
 ```bash
 npm run build
@@ -2961,7 +2961,7 @@ npm run build
 
 Buka `/admin` → sidebar harus tampilkan 5 ikon (Dashboard, Sekolah, Berita, Galeri, Pengaturan).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add resources/views/components/admin/
@@ -2980,7 +2980,7 @@ git commit -m "feat: admin sidebar menu for content management"
 - Modify: `routes/web.php`
 - Test: `tests/Feature/AdminSchoolsTest.php`
 
-- [ ] **Step 1: Tulis test gagal**
+- [x] **Step 1: Tulis test gagal**
 
 `tests/Feature/AdminSchoolsTest.php`:
 
@@ -3019,7 +3019,7 @@ it('validates required fields', function () {
 });
 ```
 
-- [ ] **Step 2: Jalankan test, verifikasi gagal**
+- [x] **Step 2: Jalankan test, verifikasi gagal**
 
 ```bash
 php artisan test --filter=AdminSchoolsTest
@@ -3027,7 +3027,7 @@ php artisan test --filter=AdminSchoolsTest
 
 Expected: FAIL.
 
-- [ ] **Step 3: Buat Index component**
+- [x] **Step 3: Buat Index component**
 
 `app/Livewire/Admin/Schools/Index.php`:
 
@@ -3084,7 +3084,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 4: Buat Index view**
+- [x] **Step 4: Buat Index view**
 
 `resources/views/livewire/admin/schools/index.blade.php`:
 
@@ -3148,7 +3148,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 5: Buat Form component**
+- [x] **Step 5: Buat Form component**
 
 `app/Livewire/Admin/Schools/Form.php`:
 
@@ -3233,7 +3233,7 @@ class Form extends Component
 }
 ```
 
-- [ ] **Step 6: Buat Form view**
+- [x] **Step 6: Buat Form view**
 
 `resources/views/livewire/admin/schools/form.blade.php`:
 
@@ -3317,7 +3317,7 @@ class Form extends Component
 </div>
 ```
 
-- [ ] **Step 7: Tambah rute admin sekolah**
+- [x] **Step 7: Tambah rute admin sekolah**
 
 Di `routes/web.php`, perbarui grup admin:
 
@@ -3336,7 +3336,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
 (Ganti blok grup `admin` yang lama dengan blok di atas yang sudah memakai middleware array.)
 
-- [ ] **Step 8: Jalankan test, verifikasi lulus**
+- [x] **Step 8: Jalankan test, verifikasi lulus**
 
 ```bash
 php artisan test --filter=AdminSchoolsTest
@@ -3344,7 +3344,7 @@ php artisan test --filter=AdminSchoolsTest
 
 Expected: PASS (3 tes).
 
-- [ ] **Step 9: Build & verifikasi manual**
+- [x] **Step 9: Build & verifikasi manual**
 
 ```bash
 npm run build
@@ -3353,7 +3353,7 @@ php artisan route:clear
 
 Login admin → klik "Sekolah" di sidebar → daftar sekolah. Klik "+ Tambah Sekolah" → isi form → simpan. Klik Edit/Hapus.
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add -A
@@ -3373,20 +3373,20 @@ git commit -m "feat: admin CRUD for schools"
 - Create: `resources/views/components/trix-editor.blade.php`
 - Modify: `routes/web.php`
 
-- [ ] **Step 1: Install Trix**
+- [x] **Step 1: Install Trix**
 
 ```bash
 npm install trix
 ```
 
-- [ ] **Step 2: Inisialisasi Trix di `resources/js/app.js`**
+- [x] **Step 2: Inisialisasi Trix di `resources/js/app.js`**
 
 ```js
 import 'trix';
 import 'trix/dist/trix.css';
 ```
 
-- [ ] **Step 3: Buat komponen Trix reusable**
+- [x] **Step 3: Buat komponen Trix reusable**
 
 `resources/views/components/trix-editor.blade.php`:
 
@@ -3419,7 +3419,7 @@ import 'trix/dist/trix.css';
 @endpush
 ```
 
-- [ ] **Step 4: Buat News Index component + view**
+- [x] **Step 4: Buat News Index component + view**
 
 (Pola identik dengan Schools, ganti field `level` → `category`, `name` → `title`.)
 
@@ -3540,7 +3540,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 5: Buat News Form component**
+- [x] **Step 5: Buat News Form component**
 
 `app/Livewire/Admin/News/Form.php`:
 
@@ -3623,7 +3623,7 @@ class Form extends Component
 }
 ```
 
-- [ ] **Step 6: Buat News Form view (dengan Trix)**
+- [x] **Step 6: Buat News Form view (dengan Trix)**
 
 `resources/views/livewire/admin/news/form.blade.php`:
 
@@ -3694,7 +3694,7 @@ class Form extends Component
 </div>
 ```
 
-- [ ] **Step 7: Tambah rute**
+- [x] **Step 7: Tambah rute**
 
 Di `routes/web.php` grup admin:
 
@@ -3707,7 +3707,7 @@ Route::get('/berita/baru', AdminNewsForm::class)->name('news.create');
 Route::get('/berita/{news}/edit', AdminNewsForm::class)->name('news.edit');
 ```
 
-- [ ] **Step 8: Build & verifikasi**
+- [x] **Step 8: Build & verifikasi**
 
 ```bash
 npm run build
@@ -3716,7 +3716,7 @@ php artisan route:clear
 
 Login admin → "Berita" → tambah berita → isi dengan Trix editor → simpan.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add -A
@@ -3735,7 +3735,7 @@ git commit -m "feat: admin CRUD for news with Trix editor"
 
 (Pola lebih sederhana dari News — galeri bisa upload multiple + inline edit title/caption.)
 
-- [ ] **Step 1: Tulis test**
+- [x] **Step 1: Tulis test**
 
 `tests/Feature/AdminGalleryTest.php`:
 
@@ -3753,7 +3753,7 @@ it('shows gallery index to admin', function () {
 });
 ```
 
-- [ ] **Step 2: Buat Gallery Index component**
+- [x] **Step 2: Buat Gallery Index component**
 
 `app/Livewire/Admin/Gallery/Index.php`:
 
@@ -3832,7 +3832,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 3: Buat Gallery Index view**
+- [x] **Step 3: Buat Gallery Index view**
 
 `resources/views/livewire/admin/gallery/index.blade.php`:
 
@@ -3901,7 +3901,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 4: Tambah rute**
+- [x] **Step 4: Tambah rute**
 
 Di `routes/web.php`:
 
@@ -3911,7 +3911,7 @@ use App\Livewire\Admin\Gallery\Index as AdminGalleryIndex;
 Route::get('/galeri', AdminGalleryIndex::class)->name('gallery.index');
 ```
 
-- [ ] **Step 5: Jalankan test & verifikasi**
+- [x] **Step 5: Jalankan test & verifikasi**
 
 ```bash
 php artisan test --filter=AdminGalleryTest
@@ -3921,7 +3921,7 @@ php artisan route:clear
 
 Expected: test PASS. Login admin → "Galeri" → upload foto → tampil di grid.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -3938,7 +3938,7 @@ git commit -m "feat: admin gallery management (multi-upload)"
 - Modify: `routes/web.php`
 - Test: `tests/Feature/AdminSettingsTest.php`
 
-- [ ] **Step 1: Tulis test**
+- [x] **Step 1: Tulis test**
 
 `tests/Feature/AdminSettingsTest.php`:
 
@@ -3967,7 +3967,7 @@ it('updates site settings via livewire', function () {
 });
 ```
 
-- [ ] **Step 2: Buat Settings component**
+- [x] **Step 2: Buat Settings component**
 
 `app/Livewire/Admin/Settings/Index.php`:
 
@@ -4055,7 +4055,7 @@ class Index extends Component
 }
 ```
 
-- [ ] **Step 3: Buat Settings view**
+- [x] **Step 3: Buat Settings view**
 
 `resources/views/livewire/admin/settings/index.blade.php`:
 
@@ -4140,7 +4140,7 @@ class Index extends Component
 </div>
 ```
 
-- [ ] **Step 4: Tambah rute**
+- [x] **Step 4: Tambah rute**
 
 Di `routes/web.php`:
 
@@ -4150,7 +4150,7 @@ use App\Livewire\Admin\Settings\Index as AdminSettingsIndex;
 Route::get('/pengaturan', AdminSettingsIndex::class)->name('settings.index');
 ```
 
-- [ ] **Step 5: Jalankan test & verifikasi**
+- [x] **Step 5: Jalankan test & verifikasi**
 
 ```bash
 php artisan test --filter=AdminSettingsTest
@@ -4160,7 +4160,7 @@ php artisan route:clear
 
 Login admin → "Pengaturan" → ubah tagline → simpan → cek halaman publik (footer) menampilkan tagline baru.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -4174,13 +4174,13 @@ git commit -m "feat: admin site settings (yayasan identity) form"
 **Files:**
 - Delete: `tests/Feature/ExampleTest.php`, `tests/Unit/ExampleTest.php`, `tests/smoke-test.php`
 
-- [ ] **Step 1: Hapus tes sampel starter kit**
+- [x] **Step 1: Hapus tes sampel starter kit**
 
 ```bash
 rm tests/Feature/ExampleTest.php tests/Unit/ExampleTest.php tests/smoke-test.php
 ```
 
-- [ ] **Step 2: Jalankan SELURUH tes**
+- [x] **Step 2: Jalankan SELURUH tes**
 
 ```bash
 php artisan test
@@ -4188,7 +4188,7 @@ php artisan test
 
 Expected: semua PASS (AdminAccess, Models, PublicSchools, PublicNews, AdminSchools, AdminGallery, AdminSettings).
 
-- [ ] **Step 3: Jalankan linter (Pint)**
+- [x] **Step 3: Jalankan linter (Pint)**
 
 ```bash
 composer lint
@@ -4196,20 +4196,20 @@ composer lint
 
 Expected: tidak ada error (auto-fix diterapkan).
 
-- [ ] **Step 4: Smoke test manual (checklist)**
+- [x] **Step 4: Smoke test manual (checklist)**
 
-- [ ] `/` beranda tampil dengan hero, stats, sekolah, berita
-- [ ] `/tentang` visi-misi-sejarah
-- [ ] `/sekolah` daftar + filter jenjang berfungsi
-- [ ] `/sekolah/{slug}` tab Tentang/PPDB/Galeri berfungsi
-- [ ] `/berita` daftar + filter + paginasi
-- [ ] `/berita/{slug}` artikel lengkap
-- [ ] `/galeri` grid + lightbox
-- [ ] `/ppdb` daftar per sekolah + status
-- [ ] Login admin → semua 5 menu berfungsi (CRUD Sekolah, Berita, Galeri, Pengaturan)
-- [ ] Non-admin tidak bisa akses `/admin/*`
+- [x] `/` beranda tampil dengan hero, stats, sekolah, berita
+- [x] `/tentang` visi-misi-sejarah
+- [x] `/sekolah` daftar + filter jenjang berfungsi
+- [x] `/sekolah/{slug}` tab Tentang/PPDB/Galeri berfungsi
+- [x] `/berita` daftar + filter + paginasi
+- [x] `/berita/{slug}` artikel lengkap
+- [x] `/galeri` grid + lightbox
+- [x] `/ppdb` daftar per sekolah + status
+- [x] Login admin → semua 5 menu berfungsi (CRUD Sekolah, Berita, Galeri, Pengaturan)
+- [x] Non-admin tidak bisa akses `/admin/*`
 
-- [ ] **Step 5: Commit final**
+- [x] **Step 5: Commit final**
 
 ```bash
 git add -A
