@@ -33,7 +33,7 @@ class Index extends Component
     {
         School::findOrFail($this->deleteId)?->delete();
         $this->deleteId = null;
-        $this->dispatch('school-deleted');
+        $this->dispatch('notify', message: 'Sekolah dihapus.');
     }
 
     #[Computed]

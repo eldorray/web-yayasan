@@ -44,7 +44,7 @@ class Index extends Component
         }
 
         $this->reset(['photos', 'caption', 'school_id']);
-        session()->flash('status', 'Foto ditambahkan.');
+        $this->dispatch('notify', message: 'Foto ditambahkan.');
     }
 
     public function confirmDelete(int $id): void
@@ -56,6 +56,7 @@ class Index extends Component
     {
         GalleryImage::findOrFail($this->deleteId)?->delete();
         $this->deleteId = null;
+        $this->dispatch('notify', message: 'Foto dihapus.');
     }
 
     #[Computed]

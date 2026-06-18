@@ -33,7 +33,7 @@ class Index extends Component
     {
         News::findOrFail($this->deleteId)?->delete();
         $this->deleteId = null;
-        $this->dispatch('news-deleted');
+        $this->dispatch('notify', message: 'Berita dihapus.');
     }
 
     #[Computed]

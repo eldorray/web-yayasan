@@ -83,17 +83,12 @@
             <x-admin.header :title="$title" />
 
             <div class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-                @if (session('status'))
-                    <div
-                        class="mb-6 rounded-2xl bg-emerald-50 border border-emerald-100 px-4 py-3 text-sm text-emerald-700">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
                 {{ $slot }}
             </div>
         </main>
     </div>
+
+    <x-admin.toast />
 
     @livewireScripts
 </body>

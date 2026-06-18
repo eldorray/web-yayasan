@@ -88,7 +88,7 @@ class Index extends Component
                 ->toArray()
         );
 
-        session()->flash('status', 'Pengaturan disimpan.');
+        $this->dispatch('notify', message: 'Pengaturan disimpan.');
     }
 
     public function render()
