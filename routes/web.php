@@ -5,6 +5,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Public\About;
 use App\Livewire\Public\Home;
+use App\Livewire\Public\Schools\Index as SchoolsIndex;
 use App\Livewire\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Settings\Profile as SettingsProfile;
 use App\Livewire\Settings\Theme as SettingsTheme;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::name('public.')->group(function () {
     Route::get('/', Home::class)->name('home');
     Route::get('/tentang', About::class)->name('about');
-    Route::get('/sekolah', Home::class)->name('schools.index');
+    Route::get('/sekolah', SchoolsIndex::class)->name('schools.index');
     Route::get('/sekolah/{slug}', Home::class)->name('schools.show');
     Route::get('/berita', Home::class)->name('news.index');
     Route::get('/berita/{slug}', Home::class)->name('news.show');
