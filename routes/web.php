@@ -5,6 +5,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Public\About;
 use App\Livewire\Public\Home;
+use App\Livewire\Public\Ppdb;
 use App\Livewire\Public\Gallery\Index as GalleryIndex;
 use App\Livewire\Public\News\Index as NewsIndex;
 use App\Livewire\Public\News\Show as NewsShow;
@@ -25,7 +26,7 @@ Route::name('public.')->group(function () {
     Route::get('/berita', NewsIndex::class)->name('news.index');
     Route::get('/berita/{news:slug}', NewsShow::class)->name('news.show');
     Route::get('/galeri', GalleryIndex::class)->name('gallery.index');
-    Route::get('/ppdb', Home::class)->name('ppdb');
+    Route::get('/ppdb', Ppdb::class)->name('ppdb');
 });
 
 Route::middleware('guest')->group(function () {
