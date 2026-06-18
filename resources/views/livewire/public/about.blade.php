@@ -1,10 +1,11 @@
 <div>
     {{-- Page header --}}
-    <section class="text-white py-16" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm font-semibold tracking-wider uppercase mb-3" style="color: var(--color-gold-500);">Tentang Kami</p>
-            <h1 class="text-3xl md:text-4xl font-bold">{{ $settings->name }}</h1>
-            <p class="mt-4 text-white/85 max-w-2xl mx-auto">{{ $settings->tagline }}</p>
+    <section class="relative text-white py-20 overflow-hidden" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
+        <div class="pattern-stars absolute inset-0 opacity-60" aria-hidden="true"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-semibold tracking-[0.18em] uppercase mb-3 rise rise-1" style="color: var(--color-gold-500);">Tentang Kami</p>
+            <h1 class="font-display text-4xl md:text-5xl font-extrabold rise rise-2">{{ $settings->name }}</h1>
+            <p class="mt-4 text-white/85 max-w-2xl mx-auto rise rise-3">{{ $settings->tagline }}</p>
         </div>
     </section>
 

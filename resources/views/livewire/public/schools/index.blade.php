@@ -1,8 +1,10 @@
 <div>
-    <section class="text-white py-12" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold">Sekolah Binaan</h1>
-            <p class="text-white/85 mt-2">Pendidikan Islam berkualitas di setiap jenjang.</p>
+    <section class="relative text-white py-16 overflow-hidden" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
+        <div class="pattern-stars absolute inset-0 opacity-60" aria-hidden="true"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="eyebrow rise rise-1" style="color: var(--color-gold-500);">Jenjang Pendidikan</p>
+            <h1 class="font-display text-4xl font-extrabold mt-3 rise rise-2">Sekolah Binaan</h1>
+            <p class="text-white/85 mt-2 rise rise-3">Pendidikan Islam berkualitas di setiap jenjang.</p>
         </div>
     </section>
 

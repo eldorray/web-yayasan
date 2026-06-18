@@ -9,6 +9,7 @@
 
 @theme {
     --font-sans: 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
     /* Brand palette reads from CSS variables so themes can override it. */
     --color-brand-50: var(--brand-50);
@@ -269,4 +270,119 @@
 /* Dark-mode tuning for the white containers used throughout the admin */
 .dark .bg-white {
     background-color: var(--ink-100);
+}
+
+/* =========================================================
+   Public site — signature elements & motion
+   ========================================================= */
+
+/* Islamic 8-point star (khatam) lattice — ambient texture on dark panels */
+.pattern-stars {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23f4d35e' stroke-opacity='0.16' stroke-width='1'%3E%3Cpath d='M32 4 L38 26 L60 32 L38 38 L32 60 L26 38 L4 32 L26 26 Z'/%3E%3Ccircle cx='32' cy='32' r='15'/%3E%3Cpath d='M32 17 L47 32 L32 47 L17 32 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 64px 64px;
+}
+
+/* Same lattice in ink tone for light panels */
+.pattern-stars-ink {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23065f46' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M32 4 L38 26 L60 32 L38 38 L32 60 L26 38 L4 32 L26 26 Z'/%3E%3Ccircle cx='32' cy='32' r='15'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 64px 64px;
+}
+
+/* Gradient gold text for accents */
+.text-gradient-gold {
+    background: linear-gradient(100deg, var(--color-gold-300), var(--color-gold-500) 55%, var(--color-gold-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Eyebrow label with a gold tick */
+.eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em];
+}
+
+.eyebrow::before {
+    content: '';
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, transparent, var(--color-gold-500));
+}
+
+/* Card hover lift used across public cards */
+.card-lift {
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 40px -24px rgba(6, 78, 59, 0.45);
+}
+
+/* Page-load entrance */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.rise {
+    animation: riseIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.rise-1 { animation-delay: 0.05s; }
+.rise-2 { animation-delay: 0.15s; }
+.rise-3 { animation-delay: 0.25s; }
+.rise-4 { animation-delay: 0.35s; }
+
+/* Slow ambient spin for the hero medallion ring */
+@keyframes spinSlow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-slow {
+    animation: spinSlow 36s linear infinite;
+}
+
+/* Animated gold underline for nav links */
+.nav-underline {
+    position: relative;
+}
+
+.nav-underline::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--color-gold-500);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-underline:hover::after,
+.nav-underline.is-active::after {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rise,
+    .spin-slow {
+        animation: none;
+    }
+
+    .card-lift:hover {
+        transform: none;
+    }
 }

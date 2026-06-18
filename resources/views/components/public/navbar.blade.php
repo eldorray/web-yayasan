@@ -13,19 +13,17 @@
     x-data="{ open: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-            <a href="{{ route('public.home') }}" class="flex items-center gap-2.5">
-                <span class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-base leading-none"
-                      style="background-color: var(--brand-800); color: var(--color-gold-500);">Dh</span>
-                <span class="font-bold text-ink-900 tracking-tight hidden sm:block">{{ \Illuminate\Support\Str::limit($settings->name, 28) }}</span>
+            <a href="{{ route('public.home') }}" class="flex items-center gap-2.5 group">
+                <span class="w-9 h-9 rounded-xl flex items-center justify-center font-display font-extrabold text-base leading-none shadow-sm transition-transform group-hover:scale-105"
+                      style="background: radial-gradient(circle at 30% 30%, var(--color-gold-300), var(--color-gold-600)); color: var(--brand-900);">Dh</span>
+                <span class="font-display font-bold text-ink-900 tracking-tight hidden sm:block">{{ \Illuminate\Support\Str::limit($settings->name, 28) }}</span>
             </a>
 
             <nav class="hidden md:flex items-center gap-1">
                 @foreach ($navItems as $item)
+                    @php $isActive = request()->routeIs($item['route']) || request()->routeIs($item['route'].'.*'); @endphp
                     <a href="{{ route($item['route']) }}"
-                       class="px-3 py-2 rounded-full text-sm font-medium transition-colors
-                              {{ request()->routeIs($item['route']) || request()->routeIs($item['route'].'.*')
-                                  ? 'text-brand-800 bg-brand-50'
-                                  : 'text-ink-600 hover:text-ink-900 hover:bg-ink-50' }}">
+                       class="nav-underline px-3 py-2 rounded-full text-sm font-medium transition-colors {{ $isActive ? 'is-active text-brand-800' : 'text-ink-600 hover:text-ink-900' }}">
                         {{ $item['label'] }}
                     </a>
                 @endforeach

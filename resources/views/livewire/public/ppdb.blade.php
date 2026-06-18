@@ -1,10 +1,12 @@
 <div>
     {{-- Hero --}}
-    <section class="py-16 text-white text-center" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-sm font-semibold tracking-wider uppercase mb-3" style="color: var(--color-gold-500);">Penerimaan Peserta Didik Baru</p>
-            <h1 class="text-3xl md:text-4xl font-bold">PPDB Yayasan Daarul Hikmah Al Madani</h1>
-            <p class="mt-4 text-white/85">Pendaftaran dilakukan di website masing-masing sekolah. Pilih sekolah tujuan di bawah.</p>
+    <section class="relative py-20 text-white text-center overflow-hidden" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
+        <div class="pattern-stars absolute inset-0 opacity-60" aria-hidden="true"></div>
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl opacity-25" style="background: var(--color-gold-500);" aria-hidden="true"></div>
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-sm font-semibold tracking-[0.18em] uppercase mb-3 rise rise-1" style="color: var(--color-gold-500);">Penerimaan Peserta Didik Baru</p>
+            <h1 class="font-display text-4xl md:text-5xl font-extrabold rise rise-2">PPDB Yayasan Daarul Hikmah Al Madani</h1>
+            <p class="mt-4 text-white/85 rise rise-3">Pendaftaran dilakukan di website masing-masing sekolah. Pilih sekolah tujuan di bawah.</p>
         </div>
     </section>
 

@@ -1,8 +1,9 @@
 <div>
     {{-- Cover --}}
-    <div class="h-48 relative" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-600));">
+    <div class="h-48 relative overflow-hidden" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-600));">
+        <div class="pattern-stars absolute inset-0 opacity-60" aria-hidden="true"></div>
         <div class="absolute -bottom-8 left-6 sm:left-10">
-            <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-soft" style="background-color: var(--color-gold-500); color: var(--brand-900);">
+            <div class="w-20 h-20 rounded-2xl flex items-center justify-center font-display text-2xl font-extrabold shadow-lg" style="background: radial-gradient(circle at 30% 30%, var(--color-gold-300), var(--color-gold-600)); color: var(--brand-900);">
                 {{ \Illuminate\Support\Str::limit($school->level, 2, '') }}
             </div>
         </div>
@@ -15,7 +16,7 @@
         {{-- Header --}}
         <div class="mt-4">
             <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h1 class="text-3xl font-bold text-ink-900">{{ $school->name }}</h1>
+                <h1 class="font-display text-3xl font-extrabold text-ink-900">{{ $school->name }}</h1>
                 <span class="text-xs font-semibold px-2 py-1 rounded-full" style="background-color: var(--color-gold-100); color: var(--color-gold-800);">{{ $school->level }}</span>
             </div>
             <div class="text-sm text-ink-500 space-y-1">

@@ -3,7 +3,7 @@
 
     <article class="mt-4">
         <span class="text-xs font-semibold px-2 py-1 rounded-full uppercase" style="background-color: var(--color-gold-100); color: var(--color-gold-800);">{{ $news->category }}</span>
-        <h1 class="text-3xl font-bold text-ink-900 mt-3">{{ $news->title }}</h1>
+        <h1 class="font-display text-4xl font-extrabold text-ink-900 mt-3 leading-tight">{{ $news->title }}</h1>
         <p class="text-sm text-ink-500 mt-2">
             {{ $news->published_at?->format('d M Y') }} &middot; {{ $news->reading_time }} min baca
             @if ($news->author) &middot; {{ $news->author->name }} @endif

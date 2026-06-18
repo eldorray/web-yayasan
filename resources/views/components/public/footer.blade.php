@@ -1,13 +1,16 @@
 @php $settings = \App\Models\SiteSetting::current(); @endphp
 
-<footer class="mt-20 text-white" style="background-color: var(--brand-900);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<footer class="relative mt-24 text-white overflow-hidden" style="background-color: var(--brand-900);">
+    <div class="pattern-stars absolute inset-0 opacity-50" aria-hidden="true"></div>
+    {{-- Gold hairline divider at the top --}}
+    <div class="absolute top-0 inset-x-0 h-0.5" style="background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <div class="flex items-center gap-2.5 mb-3">
-                    <span class="w-9 h-9 rounded-lg flex items-center justify-center font-bold"
-                          style="background-color: var(--color-gold-500); color: var(--brand-900);">Dh</span>
-                    <span class="font-bold">{{ $settings->name }}</span>
+                    <span class="w-9 h-9 rounded-xl flex items-center justify-center font-display font-extrabold"
+                          style="background: radial-gradient(circle at 30% 30%, var(--color-gold-300), var(--color-gold-600)); color: var(--brand-900);">Dh</span>
+                    <span class="font-display font-bold">{{ $settings->name }}</span>
                 </div>
                 <p class="text-sm text-white/80">{{ $settings->tagline }}</p>
             </div>
