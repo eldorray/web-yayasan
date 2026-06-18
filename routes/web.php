@@ -6,6 +6,7 @@ use App\Livewire\Admin\News\Form as AdminNewsForm;
 use App\Livewire\Admin\News\Index as AdminNewsIndex;
 use App\Livewire\Admin\Schools\Form as AdminSchoolsForm;
 use App\Livewire\Admin\Schools\Index as AdminSchoolsIndex;
+use App\Livewire\Admin\Settings\Index as AdminSettingsIndex;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Public\About;
@@ -54,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/berita/{news}/edit', AdminNewsForm::class)->name('news.edit');
 
         Route::get('/galeri', AdminGalleryIndex::class)->name('gallery.index');
-        Route::get('/pengaturan', Dashboard::class)->name('settings.index');
+        Route::get('/pengaturan', AdminSettingsIndex::class)->name('settings.index');
     });
 
     Route::prefix('settings')->name('settings.')->group(function () {
