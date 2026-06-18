@@ -3,7 +3,7 @@
 @php
     $user = auth()->user();
     $appearance = $user?->appearance ?? 'system';
-    $theme = $user?->color_theme ?? 'orange';
+    $theme = $user?->color_theme ?? 'emerald';
 @endphp
 
 <!DOCTYPE html>

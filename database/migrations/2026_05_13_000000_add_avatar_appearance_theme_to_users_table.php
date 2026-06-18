@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar')->nullable()->after('password');
             $table->string('appearance', 10)->default('system')->after('avatar');
-            $table->string('color_theme', 32)->default('orange')->after('appearance');
+            $table->string('color_theme', 32)->default('emerald')->after('appearance');
         });
     }
 

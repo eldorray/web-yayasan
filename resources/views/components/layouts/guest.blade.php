@@ -2,7 +2,7 @@
 
 @php
     // Default theme for guest pages. If later stored globally, swap this source.
-    $theme = 'orange';
+    $theme = 'emerald';
     $appearance = 'system';
 @endphp
 

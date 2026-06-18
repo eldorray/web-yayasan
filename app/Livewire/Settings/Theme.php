@@ -11,7 +11,7 @@ use Livewire\Component;
 #[Title('Theme')]
 class Theme extends Component
 {
-    public string $theme = 'orange';
+    public string $theme = 'emerald';
 
     /**
      * Available color themes.
@@ -29,7 +29,7 @@ class Theme extends Component
 
     public function mount(): void
     {
-        $this->theme = Auth::user()->color_theme ?? 'orange';
+        $this->theme = Auth::user()->color_theme ?? 'emerald';
     }
 
     public function setTheme(string $value): void

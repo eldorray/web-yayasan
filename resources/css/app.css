@@ -39,6 +39,18 @@
     --color-surface-muted: var(--surface-muted);
     --color-dark-cocoa: #422a18;
 
+    /* Gold accent scale (untuk yayasan Islamic) */
+    --color-gold-50: #fffbeb;
+    --color-gold-100: #fef3c7;
+    --color-gold-200: #fde68a;
+    --color-gold-300: #fcd34d;
+    --color-gold-400: #fbbf24;
+    --color-gold-500: #f4d35e;
+    --color-gold-600: #d4a017;
+    --color-gold-700: #a87b0e;
+    --color-gold-800: #7c5a0a;
+    --color-gold-900: #523d07;
+
     --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-brand: 0 10px 25px -10px var(--brand-500-shadow, rgba(255, 94, 30, 0.45));
 }
@@ -86,22 +98,8 @@
    Default + alternatives. Applied via [data-theme="..."] on <html>.
    ========================================================= */
 
-/* Orange (default) */
+/* Emerald (default) */
 :root,
-[data-theme='orange'] {
-    --brand-50: #fff3ec;
-    --brand-100: #ffe0cc;
-    --brand-200: #ffc199;
-    --brand-300: #ff9a66;
-    --brand-400: #ff7a3d;
-    --brand-500: #ff5e1e;
-    --brand-600: #e64b0f;
-    --brand-700: #b83a09;
-    --brand-800: #8a2c08;
-    --brand-900: #5c1d05;
-    --brand-500-shadow: rgba(255, 94, 30, 0.45);
-}
-
 [data-theme='emerald'] {
     --brand-50: #ecfdf5;
     --brand-100: #d1fae5;
@@ -114,6 +112,20 @@
     --brand-800: #065f46;
     --brand-900: #064e3b;
     --brand-500-shadow: rgba(16, 185, 129, 0.45);
+}
+
+[data-theme='orange'] {
+    --brand-50: #fff3ec;
+    --brand-100: #ffe0cc;
+    --brand-200: #ffc199;
+    --brand-300: #ff9a66;
+    --brand-400: #ff7a3d;
+    --brand-500: #ff5e1e;
+    --brand-600: #e64b0f;
+    --brand-700: #b83a09;
+    --brand-800: #8a2c08;
+    --brand-900: #5c1d05;
+    --brand-500-shadow: rgba(255, 94, 30, 0.45);
 }
 
 [data-theme='blue'] {
