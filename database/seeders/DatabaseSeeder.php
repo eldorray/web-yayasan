@@ -16,9 +16,11 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@example.com'],
             [
-                'name' => 'Uzui',
+                'name' => 'Administrator Yayasan',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
+                'is_admin' => true,
+                'color_theme' => 'emerald',
             ],
         );
     }

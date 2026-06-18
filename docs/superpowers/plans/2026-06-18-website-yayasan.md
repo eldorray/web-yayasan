@@ -30,7 +30,7 @@
 - Modify: `.gitignore`
 - Delete: `starter-kit-new/`, semua `.DS_Store`
 
-- [ ] **Step 1: Inisialisasi repo git**
+- [x] **Step 1: Inisialisasi repo git**
 
 ```bash
 cd /Users/elfahmie/Documents/Coding/web-yayasan
@@ -38,7 +38,7 @@ git init
 git branch -M main
 ```
 
-- [ ] **Step 2: Perbarui `.gitignore`**
+- [x] **Step 2: Perbarui `.gitignore`**
 
 Tambahkan baris berikut ke `.gitignore` (pertahankan isi yang sudah ada — vendor/, node_modules/, dll):
 
@@ -48,14 +48,14 @@ Tambahkan baris berikut ke `.gitignore` (pertahankan isi yang sudah ada — vend
 refdesign/
 ```
 
-- [ ] **Step 3: Hapus file sampah**
+- [x] **Step 3: Hapus file sampah**
 
 ```bash
 find . -name '.DS_Store' -not -path './node_modules/*' -delete
 rm -rf starter-kit-new
 ```
 
-- [ ] **Step 4: Commit awal**
+- [x] **Step 4: Commit awal**
 
 ```bash
 git add -A
@@ -69,7 +69,7 @@ git commit -m "chore: initialize git & cleanup starter kit artifacts"
 **Files:**
 - Modify: `.env`, `.env.example`, `config/app.php` (bila perlu)
 
-- [ ] **Step 1: Edit `.env`**
+- [x] **Step 1: Edit `.env`**
 
 Ubah baris berikut di `.env`:
 
@@ -80,9 +80,9 @@ APP_FALLBACK_LOCALE=id
 APP_FAKER_LOCALE=id_ID
 ```
 
-- [ ] **Step 2: Edit `.env.example` dengan nilai yang sama** (kecuali `APP_KEY` tetap kosong)
+- [x] **Step 2: Edit `.env.example` dengan nilai yang sama** (kecuali `APP_KEY` tetap kosong)
 
-- [ ] **Step 3: Verifikasi**
+- [x] **Step 3: Verifikasi**
 
 ```bash
 php artisan config:clear
@@ -91,7 +91,7 @@ php artisan tinker --execute="echo config('app.name');"
 
 Expected: `Yayasan Pendidikan Daarul Hikmah Al Madani`
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add .env.example
@@ -109,7 +109,7 @@ git commit -m "chore: rebrand to Yayasan Daarul Hikmah Al Madani, set locale id"
 - Modify: `resources/views/components/layouts/app.blade.php` (set data-theme default)
 - Modify: `app/Livewire/Settings/Theme.php` & `resources/views/livewire/settings/theme.blade.php` (default `emerald`)
 
-- [ ] **Step 1: Tambah token emas ke `resources/css/app.css`**
+- [x] **Step 1: Tambah token emas ke `resources/css/app.css`**
 
 Di dalam blok `@theme { ... }`, setelah `--color-dark-cocoa: #422a18;`, tambah:
 
@@ -127,7 +127,7 @@ Di dalam blok `@theme { ... }`, setelah `--color-dark-cocoa: #422a18;`, tambah:
     --color-gold-900: #523d07;
 ```
 
-- [ ] **Step 2: Jadikan `emerald` tema default**
+- [x] **Step 2: Jadikan `emerald` tema default**
 
 Di `resources/css/app.css`, ubah blok tema pertama dari:
 
@@ -149,7 +149,7 @@ menjadi:
 
 Hasil akhir: `:root` berisi skala emerald; `[data-theme='orange']` menjadi override eksplisit.
 
-- [ ] **Step 3: Build & verifikasi visual**
+- [x] **Step 3: Build & verifikasi visual**
 
 ```bash
 npm run build
@@ -157,7 +157,7 @@ npm run build
 
 Buka dashboard admin di browser (setelah login) — warna aksen harus hijau, bukan oranye.
 
-- [ ] **Step 4: Set default `color_theme` user ke `emerald`**
+- [x] **Step 4: Set default `color_theme` user ke `emerald`**
 
 Ubah migrasi `database/migrations/2026_05_13_000000_add_avatar_appearance_theme_to_users_table.php` baris:
 
@@ -177,7 +177,7 @@ Lalu jalankan fresh migrate untuk dev (SQLite, aman):
 php artisan migrate:fresh --seed
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add resources/css/app.css database/migrations/2026_05_13_000000_add_avatar_appearance_theme_to_users_table.php

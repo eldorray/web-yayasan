@@ -21,6 +21,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/', Dashboard::class)->name('dashboard');
+    });
+
     Route::prefix('settings')->name('settings.')->group(function () {
         Route::redirect('/', '/settings/profile');
         Route::get('/profile', SettingsProfile::class)->name('profile');
