@@ -3,6 +3,7 @@
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\Public\About;
 use App\Livewire\Public\Home;
 use App\Livewire\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Settings\Profile as SettingsProfile;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 // Rute publik (sebagian placeholder — akan diisi tugas berikutnya)
 Route::name('public.')->group(function () {
     Route::get('/', Home::class)->name('home');
-    Route::get('/tentang', Home::class)->name('about');
+    Route::get('/tentang', About::class)->name('about');
     Route::get('/sekolah', Home::class)->name('schools.index');
     Route::get('/sekolah/{slug}', Home::class)->name('schools.show');
     Route::get('/berita', Home::class)->name('news.index');
