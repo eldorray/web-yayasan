@@ -208,6 +208,35 @@
         </svg>
     @break
 
+    @case('school')
+        <svg class="{{ $class }}" {!! $svgAttrs !!}>
+            <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+            <path d="M9 9v.01M9 13v.01M9 17v.01" />
+        </svg>
+    @break
+
+    @case('news')
+        <svg class="{{ $class }}" {!! $svgAttrs !!}>
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+            <path d="M7 8h10M7 12h10M7 16h6" />
+        </svg>
+    @break
+
+    @case('gallery')
+        <svg class="{{ $class }}" {!! $svgAttrs !!}>
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="9" cy="9" r="2" />
+            <path d="M21 15l-5-5L5 21" />
+        </svg>
+    @break
+
+    @case('site')
+        <svg class="{{ $class }}" {!! $svgAttrs !!}>
+            <circle cx="12" cy="12" r="3" />
+            <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" />
+        </svg>
+    @break
+
     @default
         <svg class="{{ $class }}" {!! $svgAttrs !!}>
             <circle cx="12" cy="12" r="10" />

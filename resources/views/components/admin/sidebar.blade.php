@@ -1,8 +1,11 @@
 @php
     $user = auth()->user();
     $nav = [
-        ['route' => 'dashboard', 'label' => 'Dashboard', 'icon' => 'home'], 
-        ['route' => 'settings.profile', 'label' => 'Settings', 'icon' => 'settings'],
+        ['route' => 'admin.dashboard', 'label' => 'Dashboard', 'icon' => 'home'],
+        ['route' => 'admin.schools.index', 'label' => 'Sekolah', 'icon' => 'school'],
+        ['route' => 'admin.news.index', 'label' => 'Berita', 'icon' => 'news'],
+        ['route' => 'admin.gallery.index', 'label' => 'Galeri', 'icon' => 'gallery'],
+        ['route' => 'admin.settings.index', 'label' => 'Pengaturan', 'icon' => 'site'],
     ];
 @endphp
 
