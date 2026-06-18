@@ -12,12 +12,13 @@
            lg:sticky lg:top-0 lg:h-screen lg:w-20 lg:translate-x-0 lg:z-10 lg:items-center lg:gap-8 shrink-0">
     {{-- Top: logo + close --}}
     <div class="flex items-center justify-between px-5 lg:px-0 lg:justify-center">
-        <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5">
+        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5">
             <span
-                class="w-10 h-10 bg-ink-900 rounded-xl flex items-center justify-center text-white font-bold text-lg leading-none shrink-0">
-                .I
+                class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg leading-none shrink-0"
+                style="background-color: var(--brand-800); color: var(--color-gold-500);">
+                Dh
             </span>
-            <span class="font-bold text-ink-900 tracking-tight lg:hidden">{{ config('app.name', 'InvestIQ') }}</span>
+            <span class="font-bold text-ink-900 tracking-tight lg:hidden">Daarul Hikmah</span>
         </a>
 
         {{-- Close button (mobile only) --}}
