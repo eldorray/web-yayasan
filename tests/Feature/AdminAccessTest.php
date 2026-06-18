@@ -20,3 +20,9 @@ it('allows admin user to access admin dashboard', function () {
     $admin = User::factory()->create(['is_admin' => true]);
     actingAs($admin)->get(route('admin.dashboard'))->assertOk();
 });
+
+it('admin dashboard shows school count', function () {
+    $admin = User::factory()->create(['is_admin' => true]);
+    \App\Models\School::factory()->count(2)->create();
+    actingAs($admin)->get(route('admin.dashboard'))->assertOk()->assertSee('Sekolah');
+});

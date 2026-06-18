@@ -39,6 +39,11 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', Dashboard::class)->name('dashboard');
+        // Placeholder — diganti saat CRUD masing-masing dibuat (Task 3.3–3.6)
+        Route::get('/sekolah', Dashboard::class)->name('schools.index');
+        Route::get('/berita', Dashboard::class)->name('news.index');
+        Route::get('/galeri', Dashboard::class)->name('gallery.index');
+        Route::get('/pengaturan', Dashboard::class)->name('settings.index');
     });
 
     Route::prefix('settings')->name('settings.')->group(function () {
