@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
                 'color_theme' => 'emerald',
             ],
         );
+
+        $this->call([
+            ContentSeeder::class,
+        ]);
     }
 }

@@ -27,7 +27,15 @@ class News extends Model
     protected static function booted(): void
     {
         static::creating(function (News $news) {
-            $news->slug ??= Str::slug($news->title);
+            if (! $news->slug) {
+                $base = Str::slug($news->title);
+                $slug = $base;
+                $i = 1;
+                while (static::where('slug', $slug)->exists()) {
+                    $slug = $base.'-'.(++$i);
+                }
+                $news->slug = $slug;
+            }
         });
     }
 
