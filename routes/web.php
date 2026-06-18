@@ -15,7 +15,9 @@ Route::name('public.')->group(function () {
     Route::get('/', Home::class)->name('home');
     Route::get('/tentang', Home::class)->name('about');
     Route::get('/sekolah', Home::class)->name('schools.index');
+    Route::get('/sekolah/{slug}', Home::class)->name('schools.show');
     Route::get('/berita', Home::class)->name('news.index');
+    Route::get('/berita/{slug}', Home::class)->name('news.show');
     Route::get('/galeri', Home::class)->name('gallery.index');
     Route::get('/ppdb', Home::class)->name('ppdb');
 });
