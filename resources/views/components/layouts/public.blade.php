@@ -17,7 +17,7 @@
     @livewireStyles
     <style>[x-cloak]{display:none!important;}</style>
 </head>
-<body class="min-h-screen flex flex-col bg-surface-soft">
+<body class="public-site min-h-screen flex flex-col bg-surface-soft">
     <x-public.navbar />
 
     <main class="flex-1">

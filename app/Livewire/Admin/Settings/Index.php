@@ -93,6 +93,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.admin.settings.index');
+        return view('livewire.admin.settings.index', [
+            'settings' => SiteSetting::current(),
+        ]);
     }
 }

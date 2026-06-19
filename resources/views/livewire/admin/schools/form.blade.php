@@ -61,7 +61,14 @@
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="block text-sm font-medium text-ink-700 mb-1">Logo</label>
-                <input type="file" wire:model="logo" accept="image/*" class="text-sm">
+                <div class="flex items-center gap-3">
+                    @if ($logo)
+                        <img src="{{ $logo->temporaryUrl() }}" alt="Pratinjau logo" class="w-12 h-12 rounded-lg object-contain bg-ink-50 border border-ink-200">
+                    @elseif ($school?->logo_url)
+                        <img src="{{ $school->logo_url }}" alt="Logo saat ini" class="w-12 h-12 rounded-lg object-contain bg-ink-50 border border-ink-200">
+                    @endif
+                    <input type="file" wire:model="logo" accept="image/*" class="text-sm">
+                </div>
                 @error('logo')<p class="text-xs text-red-600 mt-1">{{ $message }}</p>@enderror
             </div>
             <div>

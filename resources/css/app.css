@@ -203,11 +203,18 @@
     html {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
     }
 
     body {
         background-color: var(--color-surface);
         color: var(--color-ink-800);
+    }
+
+    .public-site {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
     }
 }
 
@@ -276,6 +283,14 @@
    Public site — signature elements & motion
    ========================================================= */
 
+:root {
+    --ease-ios: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-ios-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
+    --ease-ios-tap: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --motion-duration: 0.75s;
+    --motion-duration-fast: 0.18s;
+}
+
 /* Islamic 8-point star (khatam) lattice — ambient texture on dark panels */
 .pattern-stars {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23f4d35e' stroke-opacity='0.16' stroke-width='1'%3E%3Cpath d='M32 4 L38 26 L60 32 L38 38 L32 60 L26 38 L4 32 L26 26 Z'/%3E%3Ccircle cx='32' cy='32' r='15'/%3E%3Cpath d='M32 17 L47 32 L32 47 L17 32 Z'/%3E%3C/g%3E%3C/svg%3E");
@@ -311,19 +326,102 @@
 
 /* Card hover lift used across public cards */
 .card-lift {
-    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        transform var(--motion-duration) var(--ease-ios),
+        box-shadow var(--motion-duration) var(--ease-ios);
 }
 
-.card-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 40px -24px rgba(6, 78, 59, 0.45);
+.card-lift:active {
+    transform: scale(0.975) translateY(-2px);
+    transition-duration: var(--motion-duration-fast);
+}
+
+@media (hover: hover) {
+    .card-lift:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 40px -24px rgba(6, 78, 59, 0.45);
+    }
+
+    .card-lift:active {
+        transform: scale(0.985) translateY(-4px);
+    }
+}
+
+/* iOS-like press feedback for buttons & CTAs */
+.motion-tap {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        transform 0.45s var(--ease-ios-spring),
+        opacity 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.motion-tap:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+    transition-duration: var(--motion-duration-fast);
+}
+
+/* Scroll-triggered reveal (Intersection Observer) */
+.motion-reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.985);
+    transition:
+        opacity var(--motion-duration) var(--ease-ios),
+        transform var(--motion-duration) var(--ease-ios);
+    transition-delay: var(--motion-delay, 0s);
+    will-change: opacity, transform;
+}
+
+.motion-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Page enter after navigation */
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 14px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+main.motion-enter {
+    animation: pageEnter 0.55s var(--ease-ios) both;
+}
+
+/* Sticky navbar — shadow on bar only when scrolled (shell stays transparent) */
+[data-motion-header] {
+    @apply z-50;
+}
+
+[data-motion-header] .public-nav-bar {
+    transition:
+        background-color 0.35s var(--ease-ios),
+        box-shadow 0.35s var(--ease-ios),
+        border-color 0.35s var(--ease-ios);
+}
+
+[data-motion-header].is-scrolled .public-nav-bar {
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 32px -16px rgba(15, 23, 42, 0.18);
+    border-color: rgba(15, 23, 42, 0.08);
 }
 
 /* Page-load entrance */
 @keyframes riseIn {
     from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translate3d(0, 18px, 0);
     }
 
     to {
@@ -333,7 +431,7 @@
 }
 
 .rise {
-    animation: riseIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation: riseIn 0.85s var(--ease-ios) both;
 }
 
 .rise-1 { animation-delay: 0.05s; }
@@ -368,7 +466,7 @@
     background: var(--color-gold-500);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.45s var(--ease-ios);
 }
 
 .nav-underline:hover::after,
@@ -377,12 +475,267 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .rise,
-    .spin-slow {
+    .spin-slow,
+    main.motion-enter {
         animation: none;
     }
 
-    .card-lift:hover {
+    .motion-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .card-lift:hover,
+    .card-lift:active {
         transform: none;
     }
+
+    .motion-tap:active {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   Public Design System — UI UX Pro Max (emerald + gold brand)
+   ========================================================= */
+
+.public-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.public-container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.public-section {
+    @apply py-10 lg:py-14;
+}
+
+.public-card {
+    @apply bg-white rounded-2xl border border-ink-100 shadow-soft;
+}
+
+.public-chip {
+    @apply inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200;
+    background-color: white;
+    color: var(--ink-600);
+    border: 1px solid var(--ink-200);
+}
+
+.public-chip.is-active,
+.public-chip[aria-pressed="true"] {
+    background-color: var(--brand-700);
+    color: white;
+    border-color: transparent;
+}
+
+.public-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200 cursor-pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.public-btn-gold {
+    background-color: var(--color-gold-500);
+    color: var(--brand-900);
+}
+
+.public-btn-gold:hover {
+    background-color: var(--color-gold-400);
+}
+
+.public-btn-brand {
+    background-color: var(--brand-700);
+    color: white;
+}
+
+.public-btn-brand:hover {
+    background-color: var(--brand-800);
+}
+
+.public-btn-outline {
+    @apply border border-white/30 text-white;
+}
+
+.public-btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.public-btn-ghost {
+    @apply border border-ink-200 bg-white text-ink-700;
+}
+
+.public-btn-ghost:hover {
+    background-color: var(--ink-50);
+}
+
+.public-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200 cursor-pointer;
+    color: var(--brand-700);
+}
+
+.public-link:hover {
+    color: var(--brand-800);
+}
+
+.public-badge {
+    @apply inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full;
+}
+
+.public-badge-open {
+    @apply bg-emerald-50 text-emerald-700;
+}
+
+.public-badge-closed {
+    @apply bg-red-50 text-red-700;
+}
+
+.public-badge-gold {
+    background-color: var(--color-gold-100);
+    color: var(--color-gold-800);
+}
+
+.public-empty {
+    @apply text-center py-16 px-6;
+}
+
+.public-empty p {
+    @apply text-ink-600 text-sm;
+}
+
+.public-tabs {
+    @apply flex gap-1 p-1 rounded-2xl bg-ink-50 border border-ink-100;
+}
+
+.public-tab {
+    @apply cursor-pointer flex-1 sm:flex-none px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200 text-ink-600;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.public-tab.is-active {
+    background-color: white;
+    color: var(--brand-800);
+    box-shadow: var(--shadow-soft);
+}
+
+.public-back-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200 cursor-pointer;
+    color: var(--brand-700);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.public-back-link:hover {
+    color: var(--brand-800);
+}
+
+/* Floating navbar shell */
+.public-nav-shell {
+    @apply sticky top-0 px-4 sm:px-6 lg:px-8 pt-3 pb-2;
+    background: transparent;
+}
+
+.public-nav-bar {
+    @apply max-w-7xl mx-auto rounded-2xl backdrop-blur-xl border border-ink-100/80 shadow-soft;
+    background-color: rgba(255, 255, 255, 0.88);
+}
+
+/* Featured news hero card */
+.public-featured-news {
+    @apply cursor-pointer overflow-hidden rounded-[2rem] border border-ink-100 shadow-soft bg-white;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        transform var(--motion-duration) var(--ease-ios),
+        box-shadow var(--motion-duration) var(--ease-ios);
+}
+
+.public-featured-news:hover .public-featured-news__image {
+    transform: scale(1.03);
+}
+
+.public-featured-news__image {
+    @apply transition-transform duration-500;
+    transition-timing-function: var(--ease-ios);
+}
+
+/* School profile cover */
+.public-school-cover {
+    @apply relative h-44 sm:h-56;
+    background: linear-gradient(135deg, var(--brand-900), var(--brand-600));
+}
+
+/* PPDB list card */
+.public-ppdb-card {
+    @apply bg-white rounded-2xl border border-ink-100 shadow-soft p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        transform var(--motion-duration) var(--ease-ios),
+        box-shadow var(--motion-duration) var(--ease-ios);
+}
+
+/* Article meta bar */
+.public-article-meta {
+    @apply flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-600;
+}
+
+.public-article-meta a {
+    @apply hover:underline cursor-pointer;
+    color: var(--brand-700);
+}
+
+/* =========================================================
+   Auth pages (login / register)
+   ========================================================= */
+
+.auth-shell {
+    @apply rounded-[2rem] overflow-hidden shadow-soft border border-ink-100;
+}
+
+.auth-brand-panel {
+    background: linear-gradient(155deg, var(--brand-900) 0%, var(--brand-800) 45%, var(--brand-700) 100%);
+}
+
+.auth-form-panel {
+    @apply bg-white;
+}
+
+.auth-label {
+    @apply block text-xs font-semibold text-ink-600 mb-2 uppercase tracking-wide;
+}
+
+.auth-input {
+    @apply w-full rounded-2xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-800 placeholder:text-ink-400 transition-colors duration-200;
+}
+
+.auth-input:focus {
+    @apply outline-none border-brand-500 ring-2 ring-brand-500/20;
+}
+
+.auth-error {
+    @apply text-xs text-red-600 mt-1.5;
+}
+
+.auth-submit {
+    @apply w-full inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed;
+    background-color: var(--brand-700);
+    color: white;
+    box-shadow: 0 10px 25px -12px rgba(6, 95, 70, 0.55);
+}
+
+.auth-submit:hover:not(:disabled) {
+    background-color: var(--brand-800);
+}
+
+.auth-submit:focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
 }

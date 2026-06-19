@@ -1,34 +1,26 @@
 <div>
-    <section class="relative text-white py-16 overflow-hidden" style="background: linear-gradient(135deg, var(--brand-900), var(--brand-700));">
-        <div class="pattern-stars absolute inset-0 opacity-60" aria-hidden="true"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="eyebrow rise rise-1" style="color: var(--color-gold-500);">Kabar Terkini</p>
-            <h1 class="font-display text-4xl font-extrabold mt-3 rise rise-2">Berita &amp; Kegiatan</h1>
-            <p class="text-white/85 mt-2 rise rise-3">Kabar terbaru dari yayasan &amp; sekolah.</p>
-        </div>
-    </section>
+    <x-public.page-hero
+        eyebrow="Kabar Terkini"
+        title="Berita & Kegiatan"
+        description="Kabar terbaru dari yayasan & sekolah."
+    />
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {{-- Category filter --}}
-        <div class="flex flex-wrap gap-2 mb-8">
+    <div class="public-container public-section">
+        <div class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter kategori">
             @foreach ($this->categories as $cat)
                 @php $active = ($cat === 'all') ? is_null($this->category) : ($this->category === $cat); @endphp
-                <button type="button" wire:click="setCategory('{{ $cat }}')"
-                        class="px-4 py-2 rounded-full text-sm font-semibold capitalize transition-colors"
-                        style="{{ $active ? 'background-color: var(--brand-700); color: white;' : 'background-color: white; color: var(--ink-600); border: 1px solid var(--ink-200);' }}">
+                <x-public.filter-chip wire:click="setCategory('{{ $cat }}')" :active="$active" class="capitalize">
                     {{ $cat === 'all' ? 'Semua' : $cat }}
-                </button>
+                </x-public.filter-chip>
             @endforeach
         </div>
 
-        {{-- Featured --}}
         @if ($featured && ! $this->category)
             <div class="mb-10">
-                <x-public.news-card :news="$featured" />
+                <x-public.news-card :news="$featured" :featured="true" />
             </div>
         @endif
 
-        {{-- Grid --}}
         @if ($news->isNotEmpty())
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($news as $item)
@@ -41,7 +33,10 @@
                 {{ $news->links() }}
             </div>
         @else
-            <p class="text-center text-ink-500 py-12">Belum ada berita pada kategori ini.</p>
+            <div class="public-empty public-card">
+                <x-public.icon name="newspaper" class="w-10 h-10 mx-auto mb-3 text-ink-400" />
+                <p>Belum ada berita pada kategori ini.</p>
+            </div>
         @endif
     </div>
 </div>

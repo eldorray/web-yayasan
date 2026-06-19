@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SiteSetting extends Model
 {
@@ -19,6 +22,21 @@ class SiteSetting extends Model
         'established_year' => 'integer',
         'students_count' => 'integer',
     ];
+
+    protected function logoUrl(): Attribute
+    {
+        return Attribute::get(function () {
+            if (! $this->logo) {
+                return null;
+            }
+
+            if (Str::startsWith($this->logo, ['http://', 'https://'])) {
+                return $this->logo;
+            }
+
+            return Storage::disk('public')->url($this->logo);
+        });
+    }
 
     public static function current(): static
     {

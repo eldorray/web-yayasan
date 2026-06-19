@@ -70,7 +70,14 @@
 
         <div>
             <label class="block text-sm font-medium text-ink-700 mb-1">Logo Yayasan</label>
-            <input type="file" wire:model="logo" accept="image/*" class="text-sm">
+            <div class="flex items-center gap-3">
+                @if ($logo)
+                    <img src="{{ $logo->temporaryUrl() }}" alt="Pratinjau logo" class="w-12 h-12 rounded-lg object-contain bg-ink-50 border border-ink-200">
+                @elseif ($settings->logo_url)
+                    <img src="{{ $settings->logo_url }}" alt="Logo saat ini" class="w-12 h-12 rounded-lg object-contain bg-ink-50 border border-ink-200">
+                @endif
+                <input type="file" wire:model="logo" accept="image/*" class="text-sm">
+            </div>
             @error('logo')<p class="text-xs text-red-600 mt-1">{{ $message }}</p>@enderror
         </div>
 
