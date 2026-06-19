@@ -58,7 +58,13 @@ class School extends Model
 
     public function activePpdb(): ?PpdbInfo
     {
-        return $this->ppdbInfos()->where('is_open', true)->latest('academic_year')->first();
+        return $this->ppdbInfos()->where('is_open', true)->latest('academic_year')->first()
+            ?? $this->ppdbInfos()->latest('academic_year')->first();
+    }
+
+    public function ppdbRegistrationUrl(): ?string
+    {
+        return $this->activePpdb()?->registrationLink();
     }
 
     protected function logoUrl(): Attribute

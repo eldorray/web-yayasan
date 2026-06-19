@@ -40,11 +40,36 @@ class Form extends Component
 
     public int $sort_order = 0;
 
+    public string $ppdb_academic_year = '2026/2027';
+
+    public ?string $ppdb_open_date = null;
+
+    public ?string $ppdb_close_date = null;
+
+    public ?string $ppdb_requirements = null;
+
+    public ?string $ppdb_fees = null;
+
+    public ?string $ppdb_registration_url = null;
+
+    public bool $ppdb_is_open = true;
+
     public function mount(?School $school = null): void
     {
         if ($school && $school->exists) {
             $this->school = $school;
             $this->fill($school->only(['name', 'level', 'description', 'address', 'phone', 'email', 'website_url', 'established_year', 'is_active', 'sort_order']));
+
+            $ppdb = $school->ppdbInfos()->latest('academic_year')->first();
+            if ($ppdb) {
+                $this->ppdb_academic_year = $ppdb->academic_year;
+                $this->ppdb_open_date = $ppdb->open_date?->format('Y-m-d');
+                $this->ppdb_close_date = $ppdb->close_date?->format('Y-m-d');
+                $this->ppdb_requirements = strip_tags($ppdb->requirements ?? '', '<p><br><ul><ol><li><strong><em>');
+                $this->ppdb_fees = $ppdb->fees;
+                $this->ppdb_registration_url = $ppdb->registration_url;
+                $this->ppdb_is_open = $ppdb->is_open;
+            }
         }
     }
 
@@ -63,20 +88,48 @@ class Form extends Component
             'sort_order' => 'integer|min:0',
             'logo' => 'nullable|image|max:2048',
             'cover_image' => 'nullable|image|max:4096',
+            'ppdb_academic_year' => 'required|string|max:16',
+            'ppdb_open_date' => 'nullable|date',
+            'ppdb_close_date' => 'nullable|date|after_or_equal:ppdb_open_date',
+            'ppdb_requirements' => 'nullable|string',
+            'ppdb_fees' => 'nullable|string|max:255',
+            'ppdb_registration_url' => 'nullable|url|max:255',
+            'ppdb_is_open' => 'boolean',
         ]);
 
+        $schoolData = collect($validated)->only([
+            'name', 'level', 'description', 'address', 'phone', 'email',
+            'website_url', 'established_year', 'is_active', 'sort_order',
+        ])->toArray();
+
         if ($this->logo) {
-            $validated['logo'] = $this->logo->store('schools', 'public');
+            $schoolData['logo'] = $this->logo->store('schools', 'public');
         }
         if ($this->cover_image) {
-            $validated['cover_image'] = $this->cover_image->store('schools/covers', 'public');
+            $schoolData['cover_image'] = $this->cover_image->store('schools/covers', 'public');
         }
 
+        $ppdbData = [
+            'open_date' => $this->ppdb_open_date,
+            'close_date' => $this->ppdb_close_date,
+            'requirements' => $this->ppdb_requirements,
+            'fees' => $this->ppdb_fees,
+            'registration_url' => $this->ppdb_registration_url,
+            'is_open' => $this->ppdb_is_open,
+        ];
+
         if ($this->school && $this->school->exists) {
-            $this->school->update($validated);
+            $this->school->update($schoolData);
+            $this->school->ppdbInfos()->updateOrCreate(
+                ['academic_year' => $this->ppdb_academic_year],
+                $ppdbData,
+            );
             session()->flash('status', 'Sekolah diperbarui.');
         } else {
-            School::create($validated);
+            $school = School::create($schoolData);
+            $school->ppdbInfos()->create(array_merge($ppdbData, [
+                'academic_year' => $this->ppdb_academic_year,
+            ]));
             session()->flash('status', 'Sekolah dibuat.');
         }
 

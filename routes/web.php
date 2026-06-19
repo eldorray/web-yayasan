@@ -20,8 +20,30 @@ use App\Livewire\Public\Schools\Show as SchoolsShow;
 use App\Livewire\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Settings\Profile as SettingsProfile;
 use App\Livewire\Settings\Theme as SettingsTheme;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+Route::get('/favicon.ico', function () {
+    $settings = SiteSetting::current();
+
+    if ($settings->logo) {
+        if (Str::startsWith($settings->logo, ['http://', 'https://'])) {
+            return redirect($settings->logo);
+        }
+
+        if (Storage::disk('public')->exists($settings->logo)) {
+            return response()->file(
+                Storage::disk('public')->path($settings->logo),
+                ['Content-Type' => $settings->faviconMime()],
+            );
+        }
+    }
+
+    return response()->file(public_path('favicon.ico'));
+})->name('favicon');
 
 // Rute publik (sebagian placeholder — akan diisi tugas berikutnya)
 Route::name('public.')->group(function () {

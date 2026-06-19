@@ -25,4 +25,17 @@ class PpdbInfo extends Model
     {
         return $this->belongsTo(School::class);
     }
+
+    public function registrationLink(): ?string
+    {
+        if ($this->registration_url) {
+            return $this->registration_url;
+        }
+
+        if ($this->school?->website_url) {
+            return rtrim($this->school->website_url, '/').'/ppdb';
+        }
+
+        return null;
+    }
 }

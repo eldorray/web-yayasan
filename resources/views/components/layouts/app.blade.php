@@ -18,8 +18,7 @@
 
     <title>{{ $title ? $title . ' - ' : '' }}{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <x-favicon />
 
     {{-- Apply appearance class early to avoid FOUC + listen for Livewire-driven changes --}}
     <script>

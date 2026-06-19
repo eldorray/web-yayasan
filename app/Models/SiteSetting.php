@@ -38,6 +38,56 @@ class SiteSetting extends Model
         });
     }
 
+    public function faviconMime(): string
+    {
+        if (! $this->logo) {
+            return 'image/x-icon';
+        }
+
+        if (Str::startsWith($this->logo, ['http://', 'https://'])) {
+            return 'image/png';
+        }
+
+        return match (strtolower(pathinfo($this->logo, PATHINFO_EXTENSION))) {
+            'svg' => 'image/svg+xml',
+            'jpg', 'jpeg' => 'image/jpeg',
+            'gif' => 'image/gif',
+            'webp' => 'image/webp',
+            'ico' => 'image/x-icon',
+            default => 'image/png',
+        };
+    }
+
+    public function faviconVersion(): int
+    {
+        return $this->updated_at?->getTimestamp() ?? time();
+    }
+
+    public function syncPublicFavicon(): void
+    {
+        if (! $this->logo || Str::startsWith($this->logo, ['http://', 'https://'])) {
+            return;
+        }
+
+        if (! Storage::disk('public')->exists($this->logo)) {
+            return;
+        }
+
+        copy(
+            Storage::disk('public')->path($this->logo),
+            public_path('favicon.ico'),
+        );
+    }
+
+    protected static function booted(): void
+    {
+        static::saved(function (SiteSetting $setting) {
+            if ($setting->wasChanged('logo')) {
+                $setting->syncPublicFavicon();
+            }
+        });
+    }
+
     public static function current(): static
     {
         return static::firstOrCreate(['id' => 1], [

@@ -35,8 +35,8 @@
                                 <a href="{{ route('public.schools.show', $info->school->slug) }}" wire:navigate class="public-link motion-tap">
                                     Detail sekolah
                                 </a>
-                                @if ($info->registration_url && $info->is_open)
-                                    <a href="{{ $info->registration_url }}" target="_blank" rel="noopener" class="public-btn public-btn-brand">
+                                @if ($info->registrationLink() && $info->is_open)
+                                    <a href="{{ $info->registrationLink() }}" target="_blank" rel="noopener" class="public-btn public-btn-brand">
                                         Daftar
                                         <x-public.icon name="external-link" class="w-4 h-4" />
                                     </a>

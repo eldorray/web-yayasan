@@ -109,8 +109,8 @@
                         @if ($this->ppdb->fees)
                             <p class="text-sm text-ink-700 mb-5">Biaya: <strong>{{ $this->ppdb->fees }}</strong></p>
                         @endif
-                        @if ($this->ppdb->registration_url)
-                            <a href="{{ $this->ppdb->registration_url }}" target="_blank" rel="noopener" class="public-btn public-btn-brand">
+                        @if ($this->ppdb->registrationLink())
+                            <a href="{{ $this->ppdb->registrationLink() }}" target="_blank" rel="noopener" class="public-btn public-btn-brand">
                                 Daftar di website sekolah
                                 <x-public.icon name="external-link" class="w-4 h-4" />
                             </a>
